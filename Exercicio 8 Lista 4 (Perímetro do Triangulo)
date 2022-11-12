@@ -1,0 +1,47 @@
+/******************************************************************************
+03/10/2022
+Pedro Alves de Matos
+Rafael de Souza Melo
+*******************************************************************************/
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct {
+    int x;
+    int y;
+} Ponto;
+
+double CALCULADISTANCIA(int x1, int y1, int x2, int y2)
+{
+    return (sqrt(pow((x1-x2),2) + pow((y1-y2),2)));
+}    
+
+#define QUANTIDADE_DE_PONTOS 3
+
+int main()
+{
+    Ponto pontos[QUANTIDADE_DE_PONTOS];
+    
+    double per = 0;
+
+    pontos [0].x = -4 ; pontos [0].y = 7;
+    pontos [1].x = 2  ; pontos [1].y = -9;
+    pontos [2].x = 5  ; pontos [2].y = 3;
+    
+    for (int i = 0; i <= QUANTIDADE_DE_PONTOS; i++){
+        if (pontos[i].x > 0) {
+            printf("%d (Ponto Acima da reta)\n", pontos[i].x);
+        }
+        
+    }
+    
+    per += CALCULADISTANCIA(pontos [0].x, pontos [0].y, pontos [1].x, pontos [1].y);
+    per += CALCULADISTANCIA(pontos [1].x, pontos [1].y, pontos [2].x, pontos [2].y);
+    per += CALCULADISTANCIA(pontos [2].x, pontos [2].y, pontos [0].x, pontos [0].y);
+
+    printf("Perimetro do Triangulo: %.2lf", per);
+    
+    return 0;
+}
